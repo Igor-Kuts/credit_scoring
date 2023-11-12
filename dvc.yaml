@@ -1,0 +1,24 @@
+stages:
+
+  featurize:
+    cmd: python src/app/modelling/features/dvc_featurize.py data/data.csv
+    deps: 
+    - data/data.csv
+    - src/app/modelling/features/dvc_featurize.py
+    params: 
+    - featurize.ext_1_multi
+    - featurize.ext_2_multi
+    - featurize.ext_3_multi
+    outs:
+    - data/featurized
+
+  prep_splits:
+    cmd: python src/app/modelling/features/dvc_train_test_split.py data/featurized/data_featurized.csv
+    deps: 
+    - data/featurized/data_featurized.csv
+    - src/app/modelling/features/dvc_train_test_split.py
+    params:
+    - prep_splits.random_state
+    - prep_splits.test_size
+    outs:
+    - data/prepared

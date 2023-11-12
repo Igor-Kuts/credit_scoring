@@ -1,0 +1,8 @@
+prep_splits:
+  test_size: 0.3
+  random_state: 42
+
+featurize:
+  ext_1_multi: 0.5
+  ext_2_multi: 1.3
+  ext_3_multi: 0.7
